@@ -19,6 +19,8 @@ function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedNav, setSelectedNav] = useState('home'); 
 
+  console.log('isauth',isAuthenticated)
+
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

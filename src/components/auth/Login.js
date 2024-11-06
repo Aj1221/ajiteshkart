@@ -19,7 +19,6 @@ const Login = ({ setIsAuthenticated }) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      setIsAuthenticated(true);
        toast.success('Login successfully!', {
         position: "top-right",
         autoClose: 3000,
@@ -27,6 +26,8 @@ const Login = ({ setIsAuthenticated }) => {
        setTimeout(() => {
         navigate('/home');
       }, 3000); 
+      setIsAuthenticated(true);
+
     } catch (err) {
       setError(err.message);
     }

@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../firebase/firebaseConfig';
 import { signOut } from 'firebase/auth';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import logo from '../../assets/logo.png';
 import avatarPlaceholder from '../../assets/avatar.png'; 
 import 'react-toastify/dist/ReactToastify.css'; 
 
 import './Navbar.css';
 
-const Navbar = ({ setSelectedNav, selectedNav, setIsAuthenticated, userEmail }) => {
+const Navbar = ({ setSelectedNav, selectedNav, setIsAuthenticated }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
@@ -30,11 +30,15 @@ const Navbar = ({ setSelectedNav, selectedNav, setIsAuthenticated, userEmail }) 
   };
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    if (setIsMenuOpen !== undefined) {
+      setIsMenuOpen(prevState => !prevState);
+    }
   };
-
+  
   const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+    if (setIsDropdownOpen !== undefined) {
+      setIsDropdownOpen(prevState => !prevState);
+    }
   };
 
   const handleSelectNav = (select) => {
@@ -70,7 +74,6 @@ const Navbar = ({ setSelectedNav, selectedNav, setIsAuthenticated, userEmail }) 
         <img src={avatarPlaceholder} alt="Avatar" className="avatar" />
         {isDropdownOpen && (
           <div className="dropdown-menu">
-            <p className="dropdown-email">{userEmail}</p>
             <button className="dropdown-logout" onClick={handleLogout}>
               Logout
             </button>
@@ -78,7 +81,6 @@ const Navbar = ({ setSelectedNav, selectedNav, setIsAuthenticated, userEmail }) 
         )}
       </div>
 
-      <ToastContainer />
     </nav>
   );
 };
