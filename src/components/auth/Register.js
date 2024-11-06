@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { auth } from '../../firebase/firebaseConfig'; 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
+
+
 import './auth.css';
 
 const Register = ({ setIsAuthenticated }) => {
@@ -15,7 +19,13 @@ const Register = ({ setIsAuthenticated }) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       setIsAuthenticated(true);
-      navigate('/home'); 
+      toast.success('User Register successfully!', {
+        position: "top-right",
+        autoClose: 3000,
+      });
+       setTimeout(() => {
+        navigate('/home'); 
+      }, 3000);  
     } catch (err) {
       setError(err.message);
     }
@@ -28,6 +38,8 @@ const Register = ({ setIsAuthenticated }) => {
       <form onSubmit={handleRegister}>
         <input
           type="email"
+        className='formInput'
+
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -36,12 +48,18 @@ const Register = ({ setIsAuthenticated }) => {
         <input
           type="password"
           placeholder="Password"
+        className='formInput'
+
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Register</button>
+        <button 
+        className='loginButton' 
+        type="submit">Register</button>
       </form>
+      <ToastContainer />
+
     </div>
   );
 };

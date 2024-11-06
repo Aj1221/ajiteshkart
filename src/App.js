@@ -16,7 +16,7 @@ const Register = lazy(() => import('./components/auth/Register'));
 const queryClient = new QueryClient();
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [selectedNav, setSelectedNav] = useState('home'); 
 
   return (

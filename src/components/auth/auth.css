@@ -12,16 +12,28 @@
     text-align: center;
   }
   
-  input {
-    width: 100%;
+  .formInput {
+    width: 85%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  .loginButton{
+    width: 50%;
+    margin: 20px;
+    margin-left: 23%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   
   button {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     background-color: #28a745;
     color: white;

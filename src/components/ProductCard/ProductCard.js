@@ -4,6 +4,8 @@ import { collection, addDoc, onSnapshot } from 'firebase/firestore';
 import { toast, ToastContainer } from 'react-toastify';
 import { FaStar,FaTimes } from 'react-icons/fa';
 import "./ProductCard.css";
+import 'react-toastify/dist/ReactToastify.css'; 
+
 
 const ProductCard = ({ product, addToCart }) => {
   const [rating, setRating] = useState(0);

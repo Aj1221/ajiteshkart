@@ -5,6 +5,8 @@ import { signOut } from 'firebase/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import logo from '../../assets/logo.png';
 import avatarPlaceholder from '../../assets/avatar.png'; 
+import 'react-toastify/dist/ReactToastify.css'; 
+
 import './Navbar.css';
 
 const Navbar = ({ setSelectedNav, selectedNav, setIsAuthenticated, userEmail }) => {
@@ -16,6 +18,7 @@ const Navbar = ({ setSelectedNav, selectedNav, setIsAuthenticated, userEmail }) 
     try {
       await signOut(auth);
       toast.success('Logout successful');
+      
       
       setTimeout(() => {
         setIsAuthenticated(false);
