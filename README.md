@@ -1,46 +1,83 @@
-# Getting Started with Create React App and Redux
+Product Card Review System - 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+This project is a React application that displays products with an interactive review system. Users can view product details, add items to their cart, and leave a rating and comment for each product. The review data is stored in Firebase Firestore, with real-time updates that display the latest reviews.
 
-## Available Scripts
+Features -
 
-In the project directory, you can run:
+1- Product Display: Displays product details such as image, title, and price.
+2- Add to Cart: Adds items to a cart with a success notification.
+3- Review System: Allows users to leave a rating (out of 5 stars) and a comment. The latest two 4- reviews are displayed, and users can submit only one review per product.
+5- Responsive and Interactive UI: Styled with CSS and designed for a smooth user experience.
+6- Lazy Loading with Suspense: Components are lazily loaded, showing a loading spinner during     loading time.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Design Choices:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1- Firebase Firestore: Firestore is used for storing reviews as it provides real-time updates, scalability, and easy integration with Firebase Authentication.
+2- Modular and Reusable Components: The app is organized with modular components, making it easy to expand or reuse functionality.
+3- React Suspense for Lazy Loading: The Suspense component is used to lazy load parts of the app, enhancing performance by loading only the necessary parts of the app initially.
+4- Star Ratings: The review system includes interactive star ratings, improving the UX with visual cues for rating selection.
+5- Conditional Review Form: The review form appears as a popup when a user clicks "Write a Review" and disappears when a review is submitted or the close button is clicked.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Getting Started- 
 
-### `npm run build`
+Prerequisites
+Node.js (version 14 or above)
+Firebase Account: A Firebase project with Firestore enabled.
+Installation
+Clone the Repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+git clone https://github.com/your-username/product-card-review.git
+cd product-card-review
+Install Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+npm install
+Configure Firebase
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Set up a Firebase project on Firebase Console.
+Enable Firestore and set up Authentication (optional).
+Add your Firebase configuration details in a new file: src/firebase/firebaseConfig.js.
+ 
+// firebaseConfig.js
+import { initializeApp } from 'firebase/app';
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const app = initializeApp(firebaseConfig);
+export default app;
+Running the Application
+Start the Development Server
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm start
 
-## Learn More
+Access the Application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Open your browser and navigate to http://localhost:3000 to view the application.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Usage :
+
+Add to Cart: Click on the "Add to Cart" button to add the product to the cart. A success message appears upon successful addition.
+Write a Review: Click "Write a Review" to open the review form. Select a star rating and write your comment, then click "Submit Review."
+View Reviews: The latest two reviews for each product are displayed under the product details.
+
+Technologies Used :
+
+1- React: Frontend framework.
+2- Firebase Firestore: Database for storing reviews.
+3- React-Toastify: For displaying notifications.
+4- React Icons: Used for the star rating icons and close icon.
+5- CSS: Custom styling for responsive layout and smooth transitions.
+
+
+License
+This project is open-source under the MIT License.
